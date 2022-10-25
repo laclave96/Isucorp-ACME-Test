@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">ACME Test</string>
+    <string name="title_activity_get_directions">Map</string>
+    <string name="empty" />
+
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_btn_text">Login</string>
+    <string name="forgot_password_text">Forgot Password?</string>
+
+
+    <string name="calendar_text">Calendar</string>
+    <string name="sync_text">Sync</string>
+    <string name="dashboard_header_text">DASHBOARD</string>
+    <string name="new_ticket_text">New Ticket</string>
+    <string name="menu_text">Menu</string>
+    <string name="view_ticket_text">View Ticket</string>
+    <string name="ticket_number_text">Ticket #</string>
+
+    <string name="overview_text">Overview</string>
+    <string name="work_details_text">Work Details</string>
+    <string name="purchasing_text">Purchasing</string>
+    <string name="finishing_up_text">Finishing Up</string>
+
+    <string name="customer_info_text">Customer Info:</string>
+    <string name="scheduled_text">Scheduled For:</string>
+    <string name="job_site_text">Job Site Address:</string>
+    <string name="distance_text">Distance:</string>
+    <string name="get_directions_text">Get Directions</string>
+    <string name="dispatch_note_text">Dispatch Note:</string>
+    <string name="dept_class_header_text">Dept Class: </string>
+    <string name="service_type_header_text">Service Type:  </string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="reason_for_call_text"> Reason for Call:  </string>
+    <string name="diagnostic_fee_text">Diagnostic Fee: $</string>
+
+
+    <string name="unknown_error">Oops, unknown error has occurred!</string>
+    <string name="save_login_credentials_error"> Oops, error saving credentials!</string>
+    <string name="delete_login_credentials_error"> Oops, error removing credentials!</string>
+    <string name="fetch_login_credentials_error"> Oops, something\'s wrong retrieving credentials!</string>
+    <string name="match_username_login_credentials_error"> Invalid username</string>
+    <string name="match_password_login_credentials_error"> Invalid password</string>
+    <string name="match_login_credentials_error"> Ops, your login credentials don\'t match! Try again.</string>
+
+    <string name="insert_work_ticket_error"> Oops, error saving ticket!</string>
+    <string name="update_work_ticket_error"> Oops, error updating ticket!</string>
+    <string name="delete_work_ticket_error"> Oops, error removing ticket!</string>
+    <string name="fetch_work_tickets_error"> Oops, something\'s wrong retrieving tickets!</string>
+    <string name="fetch_ticket_info_error"> Oops, something\'s wrong retrieving ticket information!</string>
+
+
+    <string name="customer_name">Customer Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="scheduled_time">Scheduled Time</string>
+    <string name="job_street">Job Street</string>
+    <string name="job_city">Job City</string>
+    <string name="job_postal_code">Job Postal Code</string>
+    <string name="job_description">Job Description</string>
+    <string name="dept_class">Dept Class</string>
+    <string name="service_type">Service Type</string>
+    <string name="reason_for_call">Reason For Call</string>
+    <string name="save">Save</string>
+    <string name="ticket_successfully_inserted">Ticket Successfully Inserted!</string>
+    <string name="successfully_updated_ticket">Successfully Updated Ticket!</string>
+    <string name="next">Next</string>
+    <string name="select_date">Click here to select de date</string>
+    <string name="no_due_tickets"> There are no due tickets </string>
+    <string name="dashboard_text">Dashboard</string>
+    <string name="ticket_text">Ticket</string>
+
+    <string name="error_finding_address"> Oops,sorry! Error finding address </string>
+
+</resources>

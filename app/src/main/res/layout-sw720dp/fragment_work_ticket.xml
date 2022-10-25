@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.isucorp.acmetest.presentation.viewmodel.MainActivityViewModel" />
+        <import type="android.view.View" />
+        <import type="com.isucorp.acmetest.data.local.model.WorkTicketEntity"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.fragment.WorkTicketFragment">
+
+        <TextView
+            android:id="@+id/customer_info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintBottom_toTopOf="@id/customer_name_text"
+            app:layout_constraintHorizontal_bias="0.1"
+            android:textSize="28sp"
+            android:text="@string/customer_info_text"
+            app:layout_constraintVertical_chainStyle="packed"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_customer_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_customer_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.09"/>
+
+        <TextView
+            android:id="@+id/customer_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/phone_icon"
+            app:layout_constraintStart_toStartOf="@id/customer_info_text"
+            app:layout_constraintTop_toTopOf="@id/top_customer_info"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_customer_info"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_marginEnd="15dp"
+            android:singleLine="true"
+            android:text='@{viewModel.workTicket.customerName ?? @string/empty}'
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            />
+
+        <ImageView
+            android:id="@+id/phone_icon"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_customer_info"
+            app:layout_constraintEnd_toStartOf="@id/phone_text"
+            app:layout_constraintStart_toEndOf="@id/customer_name_text"
+            app:layout_constraintTop_toTopOf="@id/top_customer_info"
+            app:layout_constraintDimensionRatio="1:1"
+            android:layout_marginEnd="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_call_24"
+            />
+
+        <TextView
+            android:id="@+id/phone_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/top_customer_info"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_customer_info"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toEndOf="@id/phone_icon"
+            android:text='@{Integer.toString(viewModel.workTicket.phoneNumber)}'
+            android:textSize="28sp"
+            />
+
+        <View
+            android:id="@+id/div1"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            app:layout_constraintTop_toTopOf="@id/guideline1"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            android:background="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/scheduled_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/guideline1"
+            app:layout_constraintStart_toStartOf="@id/customer_info_text"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintBottom_toTopOf="@id/full_date_text"
+            app:layout_constraintHorizontal_bias="0"
+            android:textSize="28sp"
+            android:text="@string/scheduled_text"
+            app:layout_constraintVertical_chainStyle="packed"
+            />
+
+        <TextView
+            android:id="@+id/full_date_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/guideline2"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/scheduled_text"
+            app:layout_constraintTop_toBottomOf="@id/scheduled_text"
+            android:singleLine="true"
+            android:text="Jessica Saturday, Dec 24, 2016 11:35AM"
+            android:textColor="@color/black"
+            android:textSize="30sp"/>
+
+        <View
+            android:id="@+id/div2"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            app:layout_constraintTop_toTopOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            android:background="@color/black"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_job_address_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.22"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_job_address_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.26"/>
+
+        <ImageView
+            android:id="@+id/location_icon"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/customer_info_text"
+            app:layout_constraintTop_toTopOf="@id/top_job_address_header"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_job_address_header"
+            app:layout_constraintEnd_toStartOf="@+id/job_site_text"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ic_outline_location_on_24"
+            android:scaleType="fitCenter"/>
+
+        <TextView
+            android:id="@+id/job_site_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/top_job_address_header"
+            app:layout_constraintStart_toEndOf="@id/location_icon"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_job_address_header"
+            android:textSize="28sp"
+            android:text="@string/job_site_text"
+            />
+
+        <TextView
+            android:id="@+id/street_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/bottom_job_address_header"
+            app:layout_constraintBottom_toTopOf="@id/city_text"
+            app:layout_constraintStart_toStartOf="@id/location_icon"
+            app:layout_constraintEnd_toEndOf="@id/start_btn_guideline"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintVertical_bias="0.2"
+            android:textSize="28sp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:text='@{viewModel.workTicket.jobStreet ?? @string/empty}'
+            />
+
+        <TextView
+            android:id="@+id/city_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/street_text"
+            app:layout_constraintBottom_toTopOf="@id/postal_code_text"
+            app:layout_constraintStart_toStartOf="@id/street_text"
+            app:layout_constraintEnd_toEndOf="@id/start_btn_guideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:singleLine="true"
+            android:textSize="28sp"
+            android:textColor="@color/black"
+            android:text='@{viewModel.workTicket.jobCity ?? @string/empty}'/>
+
+        <TextView
+            android:id="@+id/postal_code_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/city_text"
+            app:layout_constraintBottom_toTopOf="@id/top_distance_header"
+            app:layout_constraintStart_toStartOf="@id/city_text"
+            app:layout_constraintEnd_toEndOf="@id/start_btn_guideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginBottom="8dp"
+            android:singleLine="true"
+            android:textSize="28sp"
+            android:textColor="@color/black"
+            android:text='@{viewModel.workTicket.jobPostalCode ?? @string/empty}'/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_distance_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.41"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_distance_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45"/>
+
+        <ImageView
+            android:id="@+id/distance_icon"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_distance_header"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/distance_header_text"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/customer_info_text"
+            app:layout_constraintTop_toTopOf="@id/top_distance_header"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            android:layout_marginEnd="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_near_me_24"
+            />
+
+        <TextView
+            android:id="@+id/distance_header_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_distance_header"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toEndOf="@id/distance_icon"
+            app:layout_constraintTop_toTopOf="@id/top_distance_header"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:text="@string/distance_text"
+            android:textSize="28sp"
+            />
+
+        <TextView
+            android:id="@+id/approx_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/distance_icon"
+            app:layout_constraintTop_toBottomOf="@id/bottom_distance_header"
+            app:layout_constraintBottom_toTopOf="@id/distance_miles_text"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintHorizontal_bias="0.03"
+            app:layout_constraintVertical_bias="0."
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:text="Approx. 17 minutes"/>
+
+        <TextView
+            android:id="@+id/distance_miles_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/approx_time_text"
+            app:layout_constraintBottom_toBottomOf="@id/guideline3"
+            app:layout_constraintStart_toStartOf="@id/approx_time_text"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:textSize="28sp"
+            android:text="11.9 miles"/>
+
+        <Button
+            android:id="@+id/get_directions_btn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@id/top_job_address_header"
+            app:layout_constraintStart_toEndOf="@id/start_btn_guideline"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_btn_guideline"
+            android:text="@string/get_directions_text"
+            android:textSize="22sp"
+            android:lines="2"/>
+
+        <View
+            android:id="@+id/div3"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            app:layout_constraintTop_toTopOf="@id/guideline3"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            android:background="@color/black"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_dispatch_note_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.56"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_dispatch_note_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.60"/>
+
+
+        <ImageView
+            android:id="@+id/dispatch_icon"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/customer_info_text"
+            app:layout_constraintTop_toTopOf="@id/top_dispatch_note_header"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_dispatch_note_header"
+            app:layout_constraintEnd_toStartOf="@id/dispatch_note_header_text"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ic_baseline_sticky_note_2_24"
+            android:scaleType="fitCenter"/>
+
+        <TextView
+            android:id="@+id/dispatch_note_header_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/top_dispatch_note_header"
+            app:layout_constraintStart_toEndOf="@id/dispatch_icon"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_dispatch_note_header"
+            android:textSize="28sp"
+            android:text="@string/dispatch_note_text"
+            app:layout_constraintVertical_chainStyle="packed"
+            />
+
+        <TextView
+            android:id="@+id/diagnostic_fee_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/dispatch_icon"
+            app:layout_constraintTop_toTopOf="@id/bottom_dispatch_note_header"
+            app:layout_constraintTop_toBottomOf="@id/bottom_dispatch_note_header"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintBottom_toTopOf="@id/description_text"
+            android:layout_marginTop="5dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:textSize="28sp"
+            android:text="@string/diagnostic_fee_text"
+            />
+
+        <TextView
+            android:id="@+id/diagnostic_fee_price_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/diagnostic_fee_text"
+            app:layout_constraintTop_toTopOf="@id/diagnostic_fee_text"
+            app:layout_constraintStart_toEndOf="@id/diagnostic_fee_text"
+            android:textSize="28sp"
+            android:textColor="@color/black"
+            android:text='@{Integer.toString(viewModel.workTicket.fee)}'
+            />
+
+        <TextView
+            android:id="@+id/description_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/diagnostic_fee_text"
+            app:layout_constraintTop_toBottomOf="@id/diagnostic_fee_text"
+            app:layout_constraintBottom_toTopOf="@id/dept_class_header_text"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:textSize="28sp"
+            android:textColor="@color/black"
+            android:lines="4"
+            android:text='@{viewModel.workTicket.jobDescription ?? @string/empty}'/>
+
+        <TextView
+            android:id="@+id/dept_class_header_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/description_text"
+            app:layout_constraintStart_toStartOf="@id/diagnostic_fee_text"
+            app:layout_constraintEnd_toStartOf="@id/dept_class_text"
+            app:layout_constraintBottom_toTopOf="@id/service_type_header_text"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:textSize="28sp"
+            android:text="@string/dept_class_header_text"/>
+
+        <TextView
+            android:id="@+id/dept_class_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/dept_class_header_text"
+            app:layout_constraintTop_toTopOf="@id/dept_class_header_text"
+            app:layout_constraintBottom_toBottomOf="@id/dept_class_header_text"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:text='@{viewModel.workTicket.deptClass ?? @string/empty}'/>
+
+        <TextView
+            android:id="@+id/service_type_header_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/dept_class_header_text"
+            app:layout_constraintStart_toStartOf="@id/dept_class_header_text"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintBottom_toBottomOf="@id/guideline4"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:textSize="28sp"
+            android:text="@string/service_type_header_text"/>
+
+        <TextView
+            android:id="@+id/service_type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/service_type_header_text"
+            app:layout_constraintTop_toTopOf="@id/service_type_header_text"
+            app:layout_constraintBottom_toBottomOf="@id/service_type_header_text"
+            app:layout_constraintEnd_toStartOf="@id/ticket_text"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:singleLine="true"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:text='@{viewModel.workTicket.serviceType ?? @string/empty}'/>
+
+        <TextView
+            android:id="@+id/ticket_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/ticket_number_text"
+            app:layout_constraintEnd_toStartOf="@id/ticket_number_text"
+            android:text="@string/ticket_number_text"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/ticket_number_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/guideline4"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            android:textSize="28sp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:text='@{Integer.toString(viewModel.workTicket.id)}'/>
+
+        <View
+            android:id="@+id/div4"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            app:layout_constraintBottom_toBottomOf="@id/guideline4"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            android:background="@color/black"/>
+
+        <TextView
+            android:id="@+id/reason_for_call_header_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/customer_info_text"
+            app:layout_constraintTop_toTopOf="@id/guideline4"
+            app:layout_constraintEnd_toStartOf="@id/reason_for_call_text"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="5dp"
+            android:textSize="28sp"
+            android:text="@string/reason_for_call_text"/>
+
+        <TextView
+            android:id="@+id/reason_for_call_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/reason_for_call_header_text"
+            app:layout_constraintTop_toTopOf="@id/reason_for_call_header_text"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintHorizontal_bias="0.1"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:maxLines="3"
+            android:text='@{viewModel.workTicket.reasonForCall ?? @string/empty}'/>
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.03"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.97"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.21"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.55"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.90"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_btn_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_btn_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/overview"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/overview_text" />
+
+    <item
+        android:id="@+id/work_details"
+        android:icon="@drawable/ic_baseline_info_24"
+        android:title="@string/work_details_text" />
+
+    <item
+        android:id="@+id/purchasing"
+        android:icon="@drawable/ic_baseline_add_shopping_cart_24"
+        android:title="@string/purchasing_text" />
+
+    <item
+        android:id="@+id/finishing_up"
+        android:title="@string/finishing_up_text"
+        android:icon="@drawable/ic_baseline_check_box_24"/>
+
+    <item
+        android:id="@+id/camera"
+        android:icon="@drawable/ic_baseline_photo_camera_24"
+        android:title="" />
+
+
+</menu>
